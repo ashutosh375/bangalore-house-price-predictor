@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Price Predictor</title>
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="input-group">
+            <label for="area">Area (Square Feet)</label>
+            <div class="input-wrapper">
+                <input type="number" id="uiSqft" value="1000" placeholder="Enter area">
+                <span class="input-icon">📐</span>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>BHK</label>
+            <div class="radio-group" id="bhk-group">
+                <button type="button" class="btn-radio" data-value="1">1</button>
+                <button type="button" class="btn-radio active" data-value="2">2</button>
+                <button type="button" class="btn-radio" data-value="3">3</button>
+                <button type="button" class="btn-radio" data-value="4">4</button>
+                <button type="button" class="btn-radio" data-value="5">5</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Bath</label>
+            <div class="radio-group" id="bath-group">
+                <button type="button" class="btn-radio" data-value="1">1</button>
+                <button type="button" class="btn-radio active" data-value="2">2</button>
+                <button type="button" class="btn-radio" data-value="3">3</button>
+                <button type="button" class="btn-radio" data-value="4">4</button>
+                <button type="button" class="btn-radio" data-value="5">5</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="uiLocations">Location</label>
+            <div class="select-wrapper">
+                <select id="uiLocations">
+                    <option value="1st block jayanagar">1st block jayanagar</option>
+                    <option value="indiranagar">Indiranagar</option>
+                    <option value="koramangala">Koramangala</option>
+                    <option value="whitefield">Whitefield</option>
+                </select>
+                <span class="select-icon">📍</span>
+            </div>
+        </div>
+        <button class="submit" onclick="onClickedEstimatedPrice()" type="button">Estimate Price</button>
+        <!-- Replace your old uiEstimatedPrice and result-box divs with this single line -->
+        <div id="uiEstimatedPrice" class="result-container"></div>
+        
+    </div>
+
+    <script>
+    // Interactive Button Groups for BHK and Bath
+    setupRadioGroup('bhk-group');
+    setupRadioGroup('bath-group');
+
+    function setupRadioGroup(groupId) {
+        const container = document.getElementById(groupId);
+        const buttons = container.querySelectorAll('.btn-radio');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const activeBtn = container.querySelector('.btn-radio.active');
+                if (activeBtn) activeBtn.classList.remove('active');
+                button.classList.add('active');
+            });
+        });
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
